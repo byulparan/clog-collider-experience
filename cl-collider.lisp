@@ -7,8 +7,9 @@
 
 (in-package :clog-collider)
 
-(setf *s* (make-external-server "localhost" :port 57140))
-(server-boot *s*)
+(unless (typep *s* 'sc::external-server)
+  (setf *s* (make-external-server "localhost" :port 57140))
+  (server-boot *s*))
 
 
 (defvar *theme-skin* (rgb 50 100 160))
